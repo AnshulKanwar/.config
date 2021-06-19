@@ -1,0 +1,14 @@
+configuration {
+	modi: "drun,window,run";
+        display-drun: " Apps";
+        display-window: " Windows";
+        display-run: " Run";
+	font: "JetBrainsMono 10";
+	location: 1;
+	yoffset: 60;
+	xoffset: 20;
+	show-icons: true;
+	icon-theme: "Flattery Dark";
+	drun-show-actions: false;
+	theme: "tokyonight";
+}

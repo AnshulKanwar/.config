@@ -1,0 +1,130 @@
+[colors]
+background           = #1A1B26
+background-alt       = #3c424a
+foreground           = #9aa5ce
+foreground-alt       = #454964
+red                  = #f7768e
+green                = #9ece6a
+orange               = #ff9e64
+yellow               = #e0af68
+lilac                = #bb9af7
+blue                 = #7aa2f7
+
+[section/base]
+height = 32
+width = 100%
+
+offset-y = 15
+offset-x = 0
+radius = 15
+
+padding = 3
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+wm-restack = bspwm
+
+fixed-center = true
+enable-ipc = true
+
+font-0 = "JetBrainsMono:style=Bold:size=9;2"
+font-1 = "Font Awesome 5 Brands:style=Regular:size=12;3"
+font-2 = "MaterialIconsRound:pixelsize=13;4"
+
+[bar/first]
+inherit = section/base
+modules-center = launcher
+width = 45px
+offset-x = 20
+
+[bar/second]
+inherit = section/base
+modules-center = bspwm
+width = 190px
+offset-x = 95
+
+[bar/third]
+inherit = section/base
+modules-center = schedule
+width = 270px
+offset-x = 855
+
+[bar/fourth]
+inherit = section/base
+modules-center = date
+width = 200px
+offset-x = 583
+
+[bar/fifth]
+inherit = section/base
+modules-left = network
+modules-center = battery
+modules-right = reminders
+width = 215px
+offset-x = 1145
+
+[module/launcher]
+type = custom/text
+content = 
+click-left = rofi -show drun
+
+[module/bspwm]
+type = internal/bspwm
+label-focused = 
+label-occupied = 
+label-empty = 
+label-focused-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+time      =   %B %Y at %H:%M
+time-alt  =   %B %Y at %I:%M %p
+label = "%time%"
+
+[module/network]
+type = internal/network
+interface = wlp6s0
+label-connected =  %downspeed:7%
+label-disconnected = 
+
+[module/alsa]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-muted = 
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+format-discharging = <label-discharging>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+[module/schedule]
+type = custom/script
+exec = ~/.config/polybar/scripts/scroll_schedule.sh
+click-left = feh -g 670X290+650+80 ~/study/tt.png
+tail = true
+format-padding = 1
+
+[module/reminders]
+type = custom/text
+content = 
+click-left = eww open reminders
+click-right = eww close reminders

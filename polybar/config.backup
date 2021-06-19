@@ -1,0 +1,89 @@
+[colors]
+background           = #1A1B26
+background-alt       = #3c424a
+foreground           = #be91f8
+foreground-alt       = #454964
+
+[section/base]
+height = 30
+width = 100%
+
+offset-y = 0
+offset-x = 0
+radius = 0
+
+module-margin = 1.5
+padding = 3
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+fixed-center = true
+enable-ipc = true
+
+font-0 = "JetBrainsMono:style=Bold:size=10;3"
+font-1 = "Font Awesome 5 Brands:style=Regular:size=13;3"
+font-2 = "MaterialIconsRound:pixelsize=15;4"
+
+[bar/mybar]
+inherit = section/base
+modules-left = launcher bspwm schedule
+modules-center = date
+modules-right = network alsa xbacklight battery
+
+[module/launcher]
+type = custom/text
+content = 
+click-left = rofi -show drun
+
+[module/bspwm]
+type = internal/bspwm
+label-focused = 
+label-occupied = 
+label-empty = 
+
+[module/date]
+type = internal/date
+interval = 5
+format-prefix =
+format-prefix-foreground = #342E2B
+time      =  %B %Y at %H:%M
+time-alt  =  %B %Y at %I:%M %p
+label = " %time%"
+
+[module/network]
+type = internal/network
+interface = wlp6s0
+label-connected =  %downspeed%
+label-disconnected = 
+
+[module/alsa]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-muted = 
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+format-discharging = <label-discharging>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+[module/schedule]
+type = custom/script
+exec = ~/.config/polybar/scripts/scroll_schedule.sh
+click-left = feh -g 735X345+180+40 ~/study/tt.png
+tail = true

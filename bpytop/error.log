@@ -1,0 +1,21 @@
+18/06/21 (17:12:02) | ERROR: Data collection thread failed with exception: 'memory_info'
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 2938, in _runner
+    collector._collect()
+  File "/usr/bin/bpytop", line 3706, in _collect
+    cls._tree(sort_cmd=sort_cmd, reverse=reverse, proc_per_cpu=proc_per_cpu, search=search)
+  File "/usr/bin/bpytop", line 3948, in _tree
+    create_tree(min(tree), tree)
+  File "/usr/bin/bpytop", line 3945, in create_tree
+    create_tree(child, tree, indent + " │ ", indent + " ├─ ", found=found, depth=depth+1, collapse_to=collapse_to)
+  File "/usr/bin/bpytop", line 3945, in create_tree
+    create_tree(child, tree, indent + " │ ", indent + " ├─ ", found=found, depth=depth+1, collapse_to=collapse_to)
+  File "/usr/bin/bpytop", line 3945, in create_tree
+    create_tree(child, tree, indent + " │ ", indent + " ├─ ", found=found, depth=depth+1, collapse_to=collapse_to)
+  File "/usr/bin/bpytop", line 3946, in create_tree
+    create_tree(tree[pid][-1], tree, indent + "  ", indent + " └─ ", depth=depth+1, collapse_to=collapse_to)
+  File "/usr/bin/bpytop", line 3900, in create_tree
+    if CONFIG.proc_mem_bytes and hasattr(getinfo["memory_info"], "rss"):
+KeyError: 'memory_info'
+18/06/21 (17:12:02) | WARNING: Exiting with errorcode (1). Runtime 0:00:17 
+
